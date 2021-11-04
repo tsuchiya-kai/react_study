@@ -1,14 +1,11 @@
 // import logo from './logo.svg';
 // import './App.css';
-import TestComponent from "./component/TestComponent";
+import { UseStateTest } from "./component/index";
 
 function App() {
   return (
     <div>
-      <TestComponent
-        title={"タイトルテスト"}
-        // content={"コンテンツテスト"}
-      ></TestComponent>
+      <UseStateTest></UseStateTest>
     </div>
   );
 }
