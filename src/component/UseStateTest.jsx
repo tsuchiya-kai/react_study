@@ -39,10 +39,23 @@ export default function UseStateTest() {
   /**
    * useEffectの学習
    */
+  const [githubId, setGithubId] = useState("tsuchiya-kai");
+  const [inputUserForGithub, setInputUserForGithub] = useState("");
+  const [gitHubData, setGitHubData] = useState();
 
   useEffect(() => {
-    console.log("useEffectテスト");
-  });
+    fetch(`https://api.github.com/users/${githubId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log({ githubId, data });
+        setGitHubData(data);
+      })
+      .catch((e) => {
+        console.log("gitHubアカウントの取得に失敗しました", { e });
+      });
+  }, [githubId]);
+
+  //
 
   return (
     <div>
@@ -51,6 +64,7 @@ export default function UseStateTest() {
       <p>{message}</p>
 
       <br />
+      <hr />
 
       <h2>カウントのサンプル</h2>
       <h3>count:{count}</h3>
@@ -68,6 +82,26 @@ export default function UseStateTest() {
       >
         down
       </button>
+
+      <br />
+      <hr />
+
+      <h2>gitHubからアカウントを取得する</h2>
+      <input
+        type="text"
+        value={inputUserForGithub}
+        onChange={(e) => setInputUserForGithub(e.target.value)}
+      />
+      <button
+        onClick={() => {
+          setGithubId(inputUserForGithub);
+        }}
+      >
+        gitHubユーザーを更新する！
+      </button>
+
+      <h3>ユーザー名：{gitHubData?.name ?? "ロード中..."}</h3>
+      <img src={gitHubData?.avatar_url} alt="" />
     </div>
   );
 }
