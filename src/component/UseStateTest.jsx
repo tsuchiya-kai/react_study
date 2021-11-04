@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export default function UseStateTest() {
   // TODO: なんかできなかった、記事が古いからかな？
   // 参考：https://qiita.com/7kaji/items/7197f0062337b002a3c1
@@ -35,6 +35,14 @@ export default function UseStateTest() {
   //   });
   // };
   // console.log(countChangeAntiPattern);
+
+  /**
+   * useEffectの学習
+   */
+
+  useEffect(() => {
+    console.log("useEffectテスト");
+  });
 
   return (
     <div>
