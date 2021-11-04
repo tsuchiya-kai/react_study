@@ -7,7 +7,7 @@ function App() {
     <div>
       <TestComponent
         title={"タイトルテスト"}
-        content={"コンテンツテスト"}
+        // content={"コンテンツテスト"}
       ></TestComponent>
     </div>
   );
