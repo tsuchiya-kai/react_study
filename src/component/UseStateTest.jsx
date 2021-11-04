@@ -28,13 +28,13 @@ export default function UseStateTest() {
 
   // アンチパターン
   // count に直接変更を加えるのは良くない
-  const countChangeAntiPattern = (type) => {
-    setCount(() => {
-      if (type === "up") return count + 1;
-      if (type === "down") return count - 1;
-    });
-  };
-  console.log(countChangeAntiPattern);
+  // const countChangeAntiPattern = (type) => {
+  //   setCount(() => {
+  //     if (type === "up") return count + 1;
+  //     if (type === "down") return count - 1;
+  //   });
+  // };
+  // console.log(countChangeAntiPattern);
 
   return (
     <div>
