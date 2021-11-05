@@ -47,6 +47,15 @@ export default function UseStateTest() {
     fetch(`https://api.github.com/users/${githubId}`)
       .then((res) => res.json())
       .then((data) => {
+        if (data.message === "Not Found") {
+          console.log("ユーザーが存在しませんでした");
+          setGitHubData({
+            name: "ユーザーが存在しません！",
+            avatar_url:
+              "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png",
+          });
+          return;
+        }
         console.log({ githubId, data });
         setGitHubData(data);
       })
@@ -100,7 +109,12 @@ export default function UseStateTest() {
         gitHubユーザーを更新する！
       </button>
 
-      <h3>ユーザー名：{gitHubData?.name ?? "ロード中..."}</h3>
+      <h3>
+        ユーザー名：
+        {gitHubData?.name ?? gitHubData
+          ? "名前が設定されていません"
+          : "ロード中..."}
+      </h3>
       <img src={gitHubData?.avatar_url} alt="" />
     </div>
   );
