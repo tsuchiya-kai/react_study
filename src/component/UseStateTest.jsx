@@ -38,6 +38,7 @@ export default function UseStateTest() {
 
   /**
    * useEffectの学習
+   * GitHubAPIからデータを取得して表示する
    */
   const [githubId, setGithubId] = useState("tsuchiya-kai");
   const [inputUserForGithub, setInputUserForGithub] = useState("");
@@ -63,8 +64,6 @@ export default function UseStateTest() {
         console.log("gitHubアカウントの取得に失敗しました", { e });
       });
   }, [githubId]);
-
-  //
 
   return (
     <div>
